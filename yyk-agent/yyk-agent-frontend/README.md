@@ -46,7 +46,7 @@ npm run build
 - `/api/ai/program_app/chat/sse` - AI编程大师聊天接口
 - `/api/ai/manus/chat` - AI超级智能体聊天接口
 
-后端服务默认运行在 `http://localhost:8123`
+后端服务默认运行在 `http://localhost:8221`
 
 # Vue 3 + Vite
 
