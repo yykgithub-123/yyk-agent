@@ -8,8 +8,24 @@
 
 ## 🏗️ 系统架构图
 
-*请在此处插入您的系统架构图。一张清晰的图表能帮助开发者快速理解项目。*
+graph TD
+A["👤 用户"] -- "浏览器交互" --> B["🖥️ 前端 (Vue.js)"];
+B -- "HTTP/WebSocket 请求" --> C["后端 (Spring Boot)"];
 
+    subgraph C [后端服务]
+        direction TB
+        D["🌐 API 层"] --> E["🤖 Agent 核心"];
+        E -- "任务分解" --> F["📚 RAG 管道"];
+        E -- "任务分解" --> G["🛠️ 工具集 (Toolset)"];
+        E -- "整合信息" --> H["🧠 LLM 服务 (Spring AI)"];
+    end
+
+    F -- "检索知识" --> I["🗄️ PostgreSQL (pgvector)"];
+    G -- "调用" --> J["🧩 外部 API"];
+    H -- "调用" --> K["☁️ 大语言模型 (LLM)"];
+
+    K -- "生成结果" --> H;
+    H -- "流式返回" --> B;
 **架构说明：**
 项目遵循经典的前后端分离模式。用户通过 **Vue.js 前端** 发送请求，**Spring Boot 后端** 接收请求后，由 **Agent 核心**进行意图理解和任务编排。如果需要，它会调用 **RAG 管道**从 **PostgreSQL (pgvector)** 向量数据库中检索知识，或通过 **Toolset** 调用外部API，最终将整合后的信息交由 **LLM** 处理，并将结果流式返回给前端。
 
@@ -100,7 +116,7 @@
     *   **User**: `yyk`
     *   **Password**: `yyk123`
     *   **Database**: `yykdb`
-
+    如图：
 ![](yyk-agent/images/sql.png)
 
 2.  连接成功后，执行以下 SQL 脚本以启用向量扩展并创建所需的表：
