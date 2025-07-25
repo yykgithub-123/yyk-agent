@@ -18,7 +18,7 @@
 
 ### 环境要求
 
-- Node.js >= 16.0.0
+- Node.js >= 18.0.0
 - npm >= 7.0.0
 
 ### 安装依赖
@@ -46,7 +46,7 @@ npm run build
 - `/api/ai/program_app/chat/sse` - AI编程大师聊天接口
 - `/api/ai/manus/chat` - AI超级智能体聊天接口
 
-后端服务默认运行在 `http://localhost:8221`
+后端服务默认运行在 `http://localhost:8222`
 
 # Vue 3 + Vite
 
