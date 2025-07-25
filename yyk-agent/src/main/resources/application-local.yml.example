@@ -1,0 +1,26 @@
+# 本文件为配置示例，使用时请复制为 application-local.yml 并填入实际值
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/your_db_name
+    username: your_username
+    password: your_password
+  ai:
+    dashscope:
+      api-key: your-dashscope-api-key-here
+      chat:
+        options:
+          model: qwen-plus
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: gemma3:1b
+    mcp:
+      client:
+        sse:
+          connections:
+            server1:
+              url: http://localhost:8127
+
+# 搜索API配置
+search-api:
+  api-key: your-search-api-key-here

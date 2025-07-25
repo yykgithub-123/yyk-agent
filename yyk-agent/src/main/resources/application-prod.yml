@@ -1,0 +1,33 @@
+# 生产环境配置示例
+# 注意：不要在此文件中包含敏感信息，实际部署时应当使用环境变量或外部配置
+
+spring:
+  # 数据库配置 - 生产环境通常使用环境变量注入
+  datasource:
+    url: ${POSTGRES_URL:jdbc:postgresql://postgres:5432/yykdb}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+
+  # AI模型配置
+  ai:
+    dashscope:
+      api-key: ${DASHSCOPE_API_KEY}
+    ollama:
+      base-url: ${OLLAMA_BASE_URL:http://ollama:11434}
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    org.springframework.ai: INFO
+    com.yyk: INFO
+  file:
+    name: /var/log/yyk-agent/application.log
+
+# 服务器配置
+server:
+  port: ${PORT:8222}
+
+# 搜索API
+search-api:
+  api-key: ${SEARCH_API_KEY}

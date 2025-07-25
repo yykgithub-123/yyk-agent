@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "amap-maps": {
+      "command": "E:/tools/NVM/nodejs/npm.cmd",
+      "args": [
+        "-y",
+        "@amap/amap-maps-mcp-server"
+      ],
+      "env": {
+        "AMAP_MAPS_API_KEY": "2582f7e56bd162a0429c7d1a69de9a7a"
+      }
+    },
+    "ye-image-search-mcp-server": {
+      "command": "java",
+      "args": [
+        "-Dspring.ai.mcp.server.stdio=true",
+        "-Dspring.main.web-application-type=none",
+        "-Dlogging.pattern.console=",
+        "-jar",
+        "E:/Project/JAVA/ideaProjects/yyk-ai-work/ye-ai-agent/ye-image-search-mcp-server/target/ye-image-search-mcp-server-0.0.1-SNAPSHOT.jar",
+        "--spring.profiles.active=stdio"
+      ],
+      "env": {}
+    }
+  }
+}

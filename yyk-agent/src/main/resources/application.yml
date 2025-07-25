@@ -1,0 +1,67 @@
+spring:
+  application:
+    name: yyk-agent
+  profiles:
+    active: local
+  # 数据库配置 - 敏感信息已移至 application-local.yml
+  datasource:
+    url: jdbc:postgresql://localhost:5432/your_db_name
+    username: your_username
+    password: your_password
+  ai:
+    # AI模型配置 - API密钥已移至 application-local.yml
+    dashscope:
+      api-key: your-api-key-here
+      chat:
+        options:
+          model: qwen-plus
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: gemma3:1b
+    # MCP配置
+    mcp:
+      client:
+        sse:
+          connections:
+            server1:
+              url: http://localhost:8127
+  #        stdio:
+  #          servers-configuration: classpath:/mcp-servers.json
+  #          timeout: 60000  # 增加超时时间到60秒
+  # 向量存储配置
+  vectorstore:
+    pgvector:
+      index-type: HNSW
+      dimensions: 1536
+      distance-type: COSINE_DISTANCE
+      max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
+server:
+  #后端 服务端 端口号
+  port: 8222
+  servlet:
+    context-path: /api
+# springdoc-openapi config
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.yyk.controller
+# knife4j config
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+# searchAPI - API密钥已移至 application-local.yml
+search-api:
+  api-key: your-search-api-key-here
+# 修改日志级别，查看 Spring AI 更多调用细节
+logging:
+  level:
+    org.springframework.ai: DEBUG
