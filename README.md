@@ -21,13 +21,13 @@
 
 ## 🛠️ 技术栈
 
-|              | 技术                                                                  |
-| :----------- | :-------------------------------------------------------------------- |
-| **后端**     | `Java 21`, `Spring Boot 3`, `Spring AI`, `Maven`, `Lombok`              |
-| **前端**     | `Vue.js 3`, `Vite`, `JavaScript`, `Axios`                             |
-| **数据库**   | `PostgreSQL` + `pgvector` 扩展                                        |
-| **API 文档** | `SpringDoc` + `Knife4j`                                               |
-| **容器化**   | `Docker`                                                              |
+|              | 技术                                                       |
+| :----------- | :--------------------------------------------------------- |
+| **后端**     | `Java 21`, `Spring Boot 3`, `Spring AI`, `Maven`, `Lombok` |
+| **前端**     | `Vue.js 3`, `Vite`, `JavaScript`, `Axios`                  |
+| **数据库**   | `PostgreSQL` + `pgvector` 扩展                             |
+| **API 文档** | `SpringDoc` + `Knife4j`                                    |
+| **容器化**   | `Docker`                                                   |
 
 ---
 
@@ -45,48 +45,59 @@
 
 ### 2. 后端启动 (`yyk-agent`)
 
-1.  **配置**
+1. **配置**
+
     *   进入 `yyk-agent` 目录。
     *   复制 `src/main/resources/application-local.yml.example` 为 `application-local.yml`
     *   在 `application-local.yml` 中填入您的数据库连接信息和 AI 模型 API Key。
-    ```yaml
-    spring:
-      datasource:
-        url: jdbc:postgresql://localhost:5432/your_db
-        username: your_username
-        password: your_password
-      ai:
-        dashscope:
-          api-key: "your-api-key-here"
-    ```
 
-2.  **构建和运行**
-    *   使用 Maven 构建项目：
+   ```yaml
+   spring:
+     datasource:
+       url: jdbc:postgresql://localhost:5432/your_db
+       username: your_username
+       password: your_password
+     ai:
+       dashscope:
+         api-key: "your-api-key-here"
+   ```
+
+2. **构建和运行**
+
+    * 使用 Maven 构建项目：
+
       ```bash
       cd yyk-agent
       mvn clean install
       ```
-    *   运行 Spring Boot 应用：
+
+    * 运行 Spring Boot 应用：
+
       ```bash
       java -jar target/yyk-agent-0.0.1-SNAPSHOT.jar
       ```
-    *   启动成功后，后端服务将运行在 `http://localhost:8222/api`。
-    *   您可以访问 `http://localhost:8222/api/doc.html` 查看 API 文档。
+
+    * 启动成功后，后端服务将运行在 `http://localhost:8222/api`。
+
+    * 您可以访问 `http://localhost:8222/api/doc.html` 查看 API 文档。
 
 ### 3. 前端启动 (`yyk-agent-frontend`)
 
-1.  **安装依赖**
-    ```bash
-    cd yyk-agent-frontend
-    npm install
-    ```
+1. **安装依赖**
 
-2.  **运行开发服务器**
-    ```bash
-    npm run dev
-    ```
+   ```bash
+   cd yyk-agent-frontend
+   npm install
+   ```
 
-3.  **访问应用**
+2. **运行开发服务器**
+
+   ```bash
+   npm run dev
+   ```
+
+3. **访问应用**
+
     *   前端开发服务器将运行在 `http://localhost:8221` (或终端提示的其他端口)。
     *   打开浏览器访问该地址即可开始与智能代理进行交互。
 
@@ -97,19 +108,19 @@
 本项目使用了多个需要API密钥的服务。为了保护这些敏感信息，我们采用了以下策略：
 
 1. **本地开发环境**：
-   - 所有敏感信息存储在 `application-local.yml` 文件中
-   - 该文件已添加到 `.gitignore`，不会被提交到Git仓库
-   - 开发者需要根据 `application-local.yml.example` 模板创建自己的本地配置
+    - 所有敏感信息存储在 `application-local.yml` 文件中
+    - 该文件已添加到 `.gitignore`，不会被提交到Git仓库
+    - 开发者需要根据 `application-local.yml.example` 模板创建自己的本地配置
 
 2. **生产环境**：
-   - 生产环境使用环境变量注入敏感信息
-   - 参考 `application-prod.yml` 中的环境变量名称
-   - 可以使用Docker环境变量、Kubernetes Secrets或其他安全的配置管理工具
+    - 生产环境使用环境变量注入敏感信息
+    - 参考 `application-prod.yml` 中的环境变量名称
+    - 可以使用Docker环境变量、Kubernetes Secrets或其他安全的配置管理工具
 
 3. **需要配置的敏感信息**：
-   - PostgreSQL数据库连接信息
-   - 通义千问 DashScope API密钥
-   - 搜索API密钥
+    - PostgreSQL数据库连接信息
+    - 通义千问 DashScope API密钥
+    - 搜索API密钥
 
 ---
 
@@ -156,13 +167,17 @@
 5.  打开一个 Pull Request
 
 ---
+
 ## 测试情况
-![](D:\images\1\微信图片_20250725150701.png)
-![](D:\images\1\image-20250723221108345.png)
-![](D:\images\1\微信截图_20250725150853.png)
-![](D:\images\1\微信图片_20250725150936.png)
-![](D:\images\1\image-20250723220818801.png)
+
+![](yyk-agent/src/main/resources/images/1.png)
+![](yyk-agent/src/main/resources/images/2.png)
+![](yyk-agent/src/main/resources/images/3.png)
+![](yyk-agent/src/main/resources/images/4.png)
+![](yyk-agent/src/main/resources/images/5.png)
+
 ---
+
 ## 📄 许可证
 
 本项目采用 [MIT License](./LICENSE) 许可证。 
